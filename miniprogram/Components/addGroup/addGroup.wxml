@@ -1,0 +1,6 @@
+<view class="drawer_screen" bindtap='cancel'></view>
+<view class='drawer_box' animation="{{animationData}}" style='margin-top:{{-1*top||0}}px'>
+  <view class="title">{{title}}</view>
+ <sc-input sc-class="sc-input" label="团队编号" name="name" bindinput="input" selection-start="{{-1}}" cursor="0"></sc-input>
+  <sc-button sc-class="sc-btn" bind:tap="build">确认加入</sc-button>
+</view>

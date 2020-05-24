@@ -1,0 +1,33 @@
+<button class="get-user-info" bindchtap="{{static?'':'tap'}}" class='container' hover-class="{{static?'':'hover'}}" hover-start-time="{{0}}">
+  <view class="content" style="flex:0">
+    <image class="userIcon" src='{{userInfo.avatarUrl||"/image/akari.jpg"}}'></image>
+    <view class="title" style="font-weight:400;font-size:3vh">{{userInfo.nickName||'test'}}</view>
+  </view>
+  <view class="content">
+   <view class="echart_panel" wx:if="{{showECharts}}">
+    <ec-canvas ec="{{ ecLine }}"></ec-canvas>
+  </view>
+    <!-- <view class="title_2">{{8}}h 已分配</view> -->
+    <!-- <view class="charts_container" >
+     <canvas canvas-id="lineCanvas" wx:if="{{!radarImg}}" disable-scroll="true" class="canvas" bindtouchstart="touchHandler" bindtouchmove="moveHandler" bindtouchend="touchEndHandler" disable-scroll="true"></canvas>
+    </view> -->
+    <view class="simplify" wx:if="{{!showCharts}}">
+      <view class="simplify_block">
+        <view wx:if="{{processedData[0].totalHours>=0}}">{{processedData[0].totalHours/60}} <text style="font-size:5vw">H</text></view>
+        <sc-loading wx:else color="white"></sc-loading>
+        <view class="subTitle">今日</view>
+      </view>
+      <!-- <view class="simplify_block">
+        <view>{{processedData[0].assignmentHours/60}} <text style="font-size:4vw">H</text></view>
+        <view class="subTitle">被分配</view>
+      </view> -->
+      <view class="simplify_block">
+        <view wx:if="{{processedData[0].totalHours>=0}}">{{weekCost/60}} <text style="font-size:5vw">H</text></view>
+        <sc-loading wx:else color="white"></sc-loading>
+        <view class="subTitle">本周</view>
+      </view>
+    </view>
+  </view>
+  <!-- button层 -->
+  <!-- <button class="get-user-info" open-type="{{getUserInfo?'getUserInfo':''}}" bindgetuserinfo="{{getUserInfo?'getUserInfo':''}}" bindtap="tap"></button> -->
+</button>

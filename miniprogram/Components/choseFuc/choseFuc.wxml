@@ -1,0 +1,14 @@
+<topBox wx:if="{{showBox}}" bindfinish="finish" id="configBox" title="创建团队">
+</topBox>
+<addGroup wx:if="{{showAdd}}" bindfinish="finish" id="configBox" title="加入团队">
+</addGroup>
+<view style="height:15px;width:100%"></view>
+<view class="timeHeader">
+  <view>集中力量办大事</view>
+</view>
+<button class="container" hover-class="hover" hover-start-time="{{0}}" open-type="{{getUserInfo?'getUserInfo':''}}" bindgetuserinfo="{{getUserInfo?'getUserInfo':''}}" bindtap="build">
+  创建团队
+</button>
+<button class="container" hover-class="hover" hover-start-time="{{0}}" open-type="{{getUserInfo?'getUserInfo':''}}" bindgetuserinfo="{{getUserInfo?'getUserInfo':''}}" bindtap="join">
+  加入团队
+</button>

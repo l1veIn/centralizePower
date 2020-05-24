@@ -1,0 +1,5 @@
+/**app.wxss**/
+@import './common/main.wxss';
+.container {
+  height: 100%;
+} 

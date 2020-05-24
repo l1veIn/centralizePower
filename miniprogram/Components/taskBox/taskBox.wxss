@@ -1,0 +1,28 @@
+@import '../userBox/userBox.wxss';
+
+@import '../scui/sc-ui.wxss';
+@import '../scui/assets/font-icon/material.wxss';
+.left_part {
+  padding: 10px 20px;
+  word-break: keep-all;
+  display: flex;
+  justify-content: flex-start;
+  min-width: 24vw;
+  font-size: 6vw
+}
+
+.container{
+  align-items:  flex-start
+}
+.content{
+  padding: 10px;
+  display: flex;
+  font-size: 4vw;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center 
+}
+.ps{
+  font-size: small;
+  font-weight: 200;
+}

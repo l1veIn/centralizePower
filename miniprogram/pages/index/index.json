@@ -1,0 +1,32 @@
+{
+  "usingComponents": {
+    "Calendar": "../../Components/calendar/calendar",
+    "userBox": "../../Components/userBox/userBox",
+    "taskBox": "../../Components/taskBox/taskBox",
+    "configBox": "../../Components/configBox/configBox",
+    "topBox": "../../Components/topBox/topBox",
+    "choseFuc": "../../Components/choseFuc/choseFuc",
+    "addGroup": "../../Components/addGroup/addGroup",
+    "sc-button": "../../Components/scui/components/scButton/sc-button",
+    "sc-input": "../../Components/scui/components/scInput/sc-input",
+    "sc-progress": "../../Components/scui/components/scProgress/sc-progress",
+    "sc-textarea": "../../Components/scui/components/scTextarea/sc-textarea",
+    "sc-checkbox": "../../Components/scui/components/scCheckbox/sc-checkbox",
+    "sc-checkbox-group": "../../Components/scui/components/scCheckboxGroup/sc-checkbox-group",
+    "sc-form": "../../Components/scui/components/scForm/sc-form",
+    "sc-switch": "../../Components/scui/components/scSwitch/sc-switch",
+    "sc-radio": "../../Components/scui/components/scRadio/sc-radio",
+    "sc-radio-group": "../../Components/scui/components/scRadioGroup/sc-radio-group",
+    "sc-cell": "../../Components/scui/components/scCell/sc-cell",
+    "sc-cell-group": "../../Components/scui/components/scCellGroup/sc-cell-group",
+    "sc-loading": "../../Components/scui/components/scLoading/sc-loading",
+    "sc-tab-group": "../../Components/scui/components/scTabGroup/sc-tab-group",
+    "sc-tab": "../../Components/scui/components/scTab/sc-tab",
+    "sc-dialog": "../../Components/scui/components/scDialog/sc-dialog",
+    "sc-snackbar": "../../Components/scui/components/scSnackbar/sc-snackbar",
+    "sc-date-picker": "../../Components/scui/components/scDatePicker/sc-date-picker",
+    "sc-time-picker": "../../Components/scui/components/scTimePicker/sc-time-picker",
+    "ec-canvas": "../../Components/ec-canvas/ec-canvas"
+  },
+  "disableScroll": true
+}

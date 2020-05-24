@@ -1,0 +1,68 @@
+<configBox wx:if="{{showBox}}" bindfinish="showConfigBox" id="configBox">
+</configBox>
+
+
+
+<view bindtap="showCharts" class="header_config">
+  <view class="iconfont  {{showCharts?'icon-rotateright':'icon-rotateleft'}}"></view>
+</view>
+<view bindtap="refresh" class="header_config" style="margin-left:40px">
+  <view class="iconfont icon-autorenew"></view>
+</view>
+<view bindtap="mainConfigBox" class="header_config" style="margin-left:80px" wx:if="{{showIndex==(-1)}}">
+  <view class="iconfont icon-edit"></view>
+</view>
+<view bindtap="backToMain" class="header_config" style="margin-left:80px" wx:if="{{showIndex!=(-1)}}">
+  <view class="iconfont iconfont-home icon-home"></view>
+</view>
+<view bindtap="showConfigBox" class="header_config" style="margin-left:120px" wx:if="{{showIndex!=(-1)&&isMe}}">
+  <view class="iconfont icon-arrow_down"></view>
+</view>
+<view style="height:15px;width:100%"></view>
+<view class="timeHeader">
+  <view>{{groupDetailInfo.groupName}}</view>
+  <view class="subTitle">{{today}}</view>
+</view>
+
+
+<!-- 用户列表 -->
+<view class='firstPage' style="height:{{sysinfo.screenHeight-64}}px">
+  <view class="legend" wx:if="{{showCharts}}">
+  <view class='legend1'></view>
+  <view>个人</view>
+  <view class='legend2'></view>
+  <view>团队</view>
+  </view>
+  <block>
+    <userBox wx:for="{{groupDetailInfo.userList}}" wx:key="index" wx:if="{{showIndex==(-1)||showIndex==index}}" bindtap="showDetail" data-index="{{index}}" userInfo="{{item.userInfo}}" processedData="{{showIndex==(-1)?processedData[index]:processedDataFromUser}}"
+      showCharts="{{showCharts}}"></userBox>
+  </block>
+
+  <!-- 任务列表 -->
+  <block wx:if="{{showIndex!=(-1)}}">
+    <view class='container_box'>
+      <Calendar id="Calendar" bind:select="select"></Calendar>
+    </view>
+    <taskBox id="taskBox" info="{{processedDataFromUser[0].tmpDate_tasks}}"   bindrefresh="refresh"></taskBox>
+  </block>
+</view>
+<!-- 已登陆 -->
+
+<!--  
+<block wx:if="{{!showBox}}">
+  <userBox static="{{true}}" bindtapBox='' userInfo="{{userInfo}}"></userBox>
+  <view class="timeHeader">
+    <view>今日数据</view>
+  </view>
+
+  <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas" bindtouchstart="touchHandler"></canvas>
+
+  <taskBox></taskBox>
+  <taskBox></taskBox>
+  <taskBox></taskBox>
+
+   <view class='container_box'>
+    <Calendar id="Calendar" toggleType='mini' bind:select="select"></Calendar>
+  </view>
+
+</block> -->

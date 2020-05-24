@@ -1,0 +1,91 @@
+<view class="drawer_screen" bindtap='cancel'></view>
+<view class='drawer_box' animation="{{animationData}}" style='margin-top:{{-1*top||0}}px'>
+  <view bindtap="cancel" style="margin-left:40px" class="header_config">
+    <view class="iconfont icon-arrow_up"></view>
+  </view>
+  <view style="height:15px;width:100%"></view>
+  <view class="timeHeader">
+    <view>新增任务</view>
+  </view>
+  <!-- <sc-button sc-class="sc-btn" bind:tap="openDialog">{{type||'选择疫情类型'}}</sc-button> -->
+  <!-- <form bindsubmit="addTask"> -->
+  <sc-form bind:submit="submit" report-submit submit-text="提交" sc-button-class="sc-btn submit-btn">
+    <sc-dialog id="dialog" sc-class="box-shadow-8" bind:open="dialogOpen" bind:close="dialogClose" bind:opened="dialogOpened" bind:closed="dialogClosed">
+      <view style="padding: 16px" class="text-body2">
+        <sc-input wx:if="{{inDialog=='taskName'}}" sc-class="sc-input" label="任务名" name="taskName" bindinput="showTaskName" selection-start="{{-1}}" cursor="0"></sc-input>
+        <sc-checkbox-group  name="like" sc-class="sc-checkbox-group-row" bindchange="checkboxChange" wx:if="{{inDialog=='addMember'}}">
+      <sc-checkbox wx:for="{{groupInfo.userList}}" wx:key="index" label="{{item.userInfo.nickName}}" value="{{item}}" sc-class="sc-checkbox" checked="{{checked[index]}}"></sc-checkbox>
+    </sc-checkbox-group>
+        <!-- <sc-button sc-class="sc-btn" bind:tap="confirmType">确认</sc-button> -->
+      </view>
+    </sc-dialog>
+    <sc-cell-group>
+      <!-- <sc-cell ripple="{{false}}">
+          <text>计时模式</text>
+          <view slot="action">
+             <sc-radio-group sc-class="sc-radio-group" bind:change="timeModeChange" name="timeMode">
+        <sc-radio label="任意时间" sc-class="sc-radio" checked value="{{false}}"></sc-radio>
+        <sc-radio label="固定时间" sc-class="sc-radio" value="{{true}}"></sc-radio>
+      </sc-radio-group>
+          </view>
+        </sc-cell> -->
+      <sc-cell bind:tap="inputTaskName">
+        <text>任务名</text>
+        <text slot="subheader">{{taskName||'请输入任务名'}}</text>
+      </sc-cell>
+       <sc-cell bind:tap="addMember" wx:if="{{isLeader}}">
+        <text>编辑成员</text>
+        <text slot="subheader">{{userNameList||'请编辑参加成员'}}</text>
+      </sc-cell>
+      <sc-cell bind:tap="choseTaskDate">
+        <text>日期</text>
+        <text slot="subheader">{{taskDateShow||'请选择任务日期'}}</text>
+      </sc-cell>
+      <sc-cell bind:tap="choseTaskStartTime">
+        <text>开始时间</text>
+        <text slot="subheader">{{taskStartTime||'请选择开始时间'}}</text>
+      </sc-cell>
+      <sc-cell bind:tap="choseTaskEndTime">
+        <text>结束时间</text>
+        <text slot="subheader">{{taskEndTime||'请选择结束时间'}}</text>
+      </sc-cell>
+      <sc-cell ripple="{{false}}">
+        <text>团队任务</text>
+        <view slot="action">
+          <sc-switch class="sc-switch" name="assignment" color="red" bind:change="assignmentChange"></sc-switch>
+        </view>
+      </sc-cell>
+      <sc-cell ripple="{{false}}">
+        <text>重复</text>
+        <view slot="action">
+          <sc-switch class="sc-switch" name="repeat" color="red" bind:change="repeatChange"></sc-switch>
+        </view>
+      </sc-cell>
+      <sc-cell wx:if="{{repeat}}">
+        <text>重复周期</text>
+        <view slot="action">
+          <sc-radio-group sc-class="sc-radio-group" bind:change="repeatModeChange" name="repeatMode">
+            <sc-radio label="每天" sc-class="sc-radio" checked value="daily"></sc-radio>
+            <sc-radio label="每周" sc-class="sc-radio" value="weekly"></sc-radio>
+            <sc-radio label="每月" sc-class="sc-radio" value="monthly"></sc-radio>
+            <sc-radio label="每年" sc-class="sc-radio" value="yearly"></sc-radio>
+          </sc-radio-group>
+        </view>
+      </sc-cell>
+      <sc-cell wx:if="{{repeat}}" bind:tap="choseRepeatEndDate">
+        <text>重复结束时间</text>
+        <text slot="subheader">{{repeatEndDateShow||'请选择重复结束时间'}}</text>
+      </sc-cell>
+    </sc-cell-group>
+    <sc-input sc-class="sc-textarea" label="备注信息" name="ps"></sc-input>
+
+    <!-- <sc-button sc-class="sc-btn" bind:tap="openDatePicker">选择日期</sc-button> -->
+    <sc-date-picker id="datepicker" bind:open="pickerOpen" bind:close="pickerClose" bind:opened="pickerOpened" bind:closed="pickerClosed" bind:submit="datePickerSubmit"></sc-date-picker>
+
+
+    <!-- <sc-button sc-class="sc-btn" bind:tap="openTimePicker">选择时间</sc-button> -->
+    <sc-time-picker id="timepicker" bind:open="pickerOpen" bind:close="pickerClose" bind:opened="pickerOpened" bind:closed="pickerClosed" bind:submit="timePickerSubmit"></sc-time-picker>
+  </sc-form>
+  <!-- </form> -->
+  <slot></slot>
+</view>

@@ -1,0 +1,16 @@
+<view class='firstPage' wx:if="{{pageIndex==1}}" style="height:{{sysinfo.screenHeight}}px">
+  <sc-loading color="white"></sc-loading>
+  <h5 style="color:white;margin-top:10px">正在集中力量...</h5>
+</view>
+
+<view class='firstPage' wx:if="{{pageIndex==2}}" style="height:{{sysinfo.screenHeight}}px">
+  <button class="container" open-type="getUserInfo" bindgetuserinfo="getUserInfo" hover-class="hover" hover-start-time="{{0}}">
+    <!-- <i class='iconfont icon-add'></i> -->
+    <view class="iconitem">
+      <i class="iconfont icon-add"></i>
+    </view>
+  </button>
+  <text class="text-5" style="color:white">点击注册/登录</text>
+  <!-- <h5 style="color:white;margin-top:20px">loading...</h5> -->
+</view>
+<choseFuc wx:if="{{pageIndex==3}}"></choseFuc>
