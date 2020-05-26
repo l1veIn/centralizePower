@@ -1,0 +1,58 @@
+<view class="drawer_screen" bindtap='cancel'></view>
+<view class='drawer_box' animation="{{animationData}}" style='margin-top:{{-1*top||0}}px'>
+  <view bindtap="cancel" style="margin-left:40px" class="header_config">
+    <view class="iconfont icon-arrow_up"></view>
+  </view>
+  <view style="height:15px;width:100%"></view>
+  <view class="timeHeader">
+    <view>系统设置</view>
+  </view>
+  <!-- <sc-button sc-class="sc-btn" bind:tap="openDialog">{{type||'选择疫情类型'}}</sc-button> -->
+  <!-- <form bindsubmit="addTask"> -->
+    <sc-dialog id="dialog" sc-class="box-shadow-8" bind:open="dialogOpen" bind:close="dialogClose" bind:opened="dialogOpened" bind:closed="dialogClosed">
+      <view style="padding: 16px" class="text-body2">
+        <sc-input wx:if="{{inDialog=='taskName'}}" sc-class="sc-input" label="任务名" name="taskName" bindinput="showTaskName" selection-start="{{-1}}" cursor="0"></sc-input>
+        <sc-checkbox-group  name="like" sc-class="sc-checkbox-group-row" bindchange="checkboxChange" wx:if="{{inDialog=='addMember'}}">
+      <sc-checkbox wx:for="{{groupInfo.userList}}" wx:key="index" label="{{item.userInfo.nickName}}" value="{{item}}" sc-class="sc-checkbox" checked="{{checked[index]}}"></sc-checkbox>
+    </sc-checkbox-group>
+        <!-- <sc-button sc-class="sc-btn" bind:tap="confirmType">确认</sc-button> -->
+      </view>
+    </sc-dialog>
+    <view style="max-height:70vh;overflow: scroll;">
+    <sc-cell-group>
+      <!-- <sc-cell ripple="{{false}}">
+          <text>计时模式</text>
+          <view slot="action">
+             <sc-radio-group sc-class="sc-radio-group" bind:change="timeModeChange" name="timeMode">
+        <sc-radio label="任意时间" sc-class="sc-radio" checked value="{{false}}"></sc-radio>
+        <sc-radio label="固定时间" sc-class="sc-radio" value="{{true}}"></sc-radio>
+      </sc-radio-group>
+          </view>
+        </sc-cell> -->
+      <sc-cell bind:tap="copyId">
+        <text>团队ID</text>
+        <text slot="subheader">{{groupInfo._id}}</text>
+        <text slot="righttext" >点击复制</text>
+      </sc-cell>
+       <sc-cell bind:tap="editNickName">
+        <text>修改昵称</text>
+        <text slot="subheader">{{myInfo.userInfo.nickName}}</text>
+        <text slot="righttext" >点击修改</text>
+      </sc-cell>
+      <sc-cell bind:tap="editAva">
+        <text>修改头像</text>
+        <text slot="righttext" >点击修改</text>
+      </sc-cell>
+      <sc-cell bind:tap="leaveGroup">
+        <text>离开团队</text>
+      </sc-cell>
+    </sc-cell-group>
+    <!-- <sc-input sc-class="sc-textarea" label="备注信息" name="ps"></sc-input> -->
+    </view>
+    <!-- <sc-button sc-class="sc-btn" bind:tap="openDatePicker">选择日期</sc-button> -->
+    <!-- <sc-date-picker id="datepicker" bind:open="pickerOpen" bind:close="pickerClose" bind:opened="pickerOpened" bind:closed="pickerClosed" bind:submit="datePickerSubmit"></sc-date-picker> -->
+    <!-- <sc-button sc-class="sc-btn" bind:tap="openTimePicker">选择时间</sc-button> -->
+    <!-- <sc-time-picker id="timepicker" bind:open="pickerOpen" bind:close="pickerClose" bind:opened="pickerOpened" bind:closed="pickerClosed" bind:submit="timePickerSubmit"></sc-time-picker> -->
+  <!-- </form> -->
+  <slot></slot>
+</view>

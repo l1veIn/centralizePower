@@ -109,9 +109,18 @@ Page({
       showBox: !that.data.showBox,
       showCharts:false
     })
-    if (!that.data.showBox){
-      that.refresh()
-    }
+    // if (!that.data.showBox){
+    //   that.refresh()
+    // }
+  },
+  showEditBox() {
+    let that = this
+    that.setData({
+      showEditBox: !that.data.showEditBox
+    })
+    // if (!that.data.showBox){
+    //   that.refresh()
+    // }
   },
   toggleType() {
     this.selectComponent('#Calendar').toggleType();

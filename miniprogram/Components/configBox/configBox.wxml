@@ -19,6 +19,7 @@
         <!-- <sc-button sc-class="sc-btn" bind:tap="confirmType">确认</sc-button> -->
       </view>
     </sc-dialog>
+    <view style="max-height:70vh;overflow: scroll;">
     <sc-cell-group>
       <!-- <sc-cell ripple="{{false}}">
           <text>计时模式</text>
@@ -78,7 +79,7 @@
       </sc-cell>
     </sc-cell-group>
     <sc-input sc-class="sc-textarea" label="备注信息" name="ps"></sc-input>
-
+</view>
     <!-- <sc-button sc-class="sc-btn" bind:tap="openDatePicker">选择日期</sc-button> -->
     <sc-date-picker id="datepicker" bind:open="pickerOpen" bind:close="pickerClose" bind:opened="pickerOpened" bind:closed="pickerClosed" bind:submit="datePickerSubmit"></sc-date-picker>
 

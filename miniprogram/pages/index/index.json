@@ -4,6 +4,7 @@
     "userBox": "../../Components/userBox/userBox",
     "taskBox": "../../Components/taskBox/taskBox",
     "configBox": "../../Components/configBox/configBox",
+    "editBox": "../../Components/editBox/editBox",
     "topBox": "../../Components/topBox/topBox",
     "choseFuc": "../../Components/choseFuc/choseFuc",
     "addGroup": "../../Components/addGroup/addGroup",
