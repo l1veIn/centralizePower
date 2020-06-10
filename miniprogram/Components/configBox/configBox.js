@@ -91,10 +91,10 @@ Component({
       }else{
         addMemberList = [wx.getStorageSync('_id')]
       }
-      let tmp1 = new Date('2020 ' + taskStartTime)
-      let tmp2 = new Date('2020 ' + taskEndTime)
+      let tmp1 = new Date('2020/01/01 ' + taskStartTime)
+      let tmp2 = new Date('2020/01/01 ' + taskEndTime)
       let tmp3 = new Date('2020 ' + repeatEndDate)
-      let cost = (tmp2 - tmp1)/(1000*60)
+      let cost = (tmp2.valueOf() - tmp1.valueOf())/(1000*60)
       if (cost<0){
         wx.showModal({
           title: '提示',

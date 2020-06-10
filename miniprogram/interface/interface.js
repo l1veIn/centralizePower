@@ -152,6 +152,25 @@ var API = {
       }
     })
   },
+  editMember(config, success) {
+    let that = this
+    wx.showLoading({
+      title: '加载中',
+    })
+    let {
+      userid,
+      taskid
+    } = config
+    let data = {}
+    data[`tasks.` + taskid] = userid
+    db.collection('Group').doc(wx.getStorageSync('groupid')).update({
+      data,
+      success: function() {
+        wx.hideLoading()
+        success()
+      }
+    })
+  },
   exitTask(config, success) {
     let that = this
     wx.showLoading({

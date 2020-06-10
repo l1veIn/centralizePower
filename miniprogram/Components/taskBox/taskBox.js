@@ -33,7 +33,7 @@ Component({
     let that = this
     that.data.dialog = scui.Dialog("#dialog");
     that.setData({
-      isLeader: that.data.myId == that.data.groupLeader,
+      isLeader: that.data.myId == wx.getStorageSync('groupLeader'),
       groupLeader: wx.getStorageSync('groupLeader'),
       groupInfo: wx.getStorageSync('groupInfo')
     })
@@ -124,14 +124,14 @@ Component({
     },
     checkboxChange(e) {
       let that = this;
-      console.log(e.detail.value)
+      console.log(e)
       that.setData({
         addMemberList: e.detail.value
       })
     },
     confirmAdd() {
       let that = this
-      app.API.joinTask({
+      app.API.editMember({
         userid: that.data.addMemberList,
         taskid: that.data.info[that.data.index]._id
       }, function(res) {
