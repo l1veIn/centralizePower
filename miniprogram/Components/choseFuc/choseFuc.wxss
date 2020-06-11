@@ -48,10 +48,14 @@ page {
   transition: transform 0.3s;
   padding:10px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   /* flex-wrap: wrap; */
   overflow:  unset;
   /* color: #ffffff */
+  /* display: flex; */
+  flex-direction: column;
+  padding:30px;
+  min-height: 32vh;
 }
 
 .hover {
@@ -60,9 +64,15 @@ page {
 }
 
 .title {
-  font-size: 6vh;
+  font-size: 4vh;
   font-family: BebasNeue-Regular;
   font-weight: 900;
+}
+.detail{
+  padding-top: 10px;
+  font-weight: 100;
+  text-align: left;
+  font-size: 3vh;
 }
 .title_2 {
   font-size: 3vh;

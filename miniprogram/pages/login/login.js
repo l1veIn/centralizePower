@@ -21,7 +21,8 @@ Page({
     that.setData({
       sysinfo
     })
-    if (wx.getStorageSync('_id') && wx.getStorageSync('groupid')) {
+    if (false) {
+    // if (wx.getStorageSync('_id') && wx.getStorageSync('groupid')) {
       wx.redirectTo({
         url: '/pages/index/index',
       })

@@ -1,7 +1,8 @@
 <button class="get-user-info" bindchtap="{{static?'':'tap'}}" class='container' hover-class="{{static?'':'hover'}}" hover-start-time="{{0}}">
-  <view class="content" style="flex:0">
+<view class="flag" wx:if='{{isMe}}'></view>
+  <view class="userInfo">
     <image class="userIcon" src='{{userInfo.avatarUrl||"/image/akari.jpg"}}'></image>
-    <view class="title" style="font-weight:400;font-size:3vh">{{userInfo.nickName||'test'}}</view>
+    <view class="userName">{{userInfo.nickName||'test'}}</view>
   </view>
   <view class="content">
    <view class="echart_panel" wx:if="{{showECharts}}">
@@ -13,18 +14,22 @@
     </view> -->
     <view class="simplify" wx:if="{{!showCharts}}">
       <view class="simplify_block">
-        <view wx:if="{{processedData[0].totalHours>=0}}">{{processedData[0].totalHours/60}} <text style="font-size:5vw">H</text></view>
+        <view wx:if="{{processedData[0].totalHours>=0}}">{{processedData[0].totalHours/60}} 
+        <!-- <text style="font-size:5vw">H</text> -->
+        </view>
         <sc-loading wx:else color="white"></sc-loading>
-        <view class="subTitle">今日</view>
+        <view class="subTitle">今日已分配(h)</view>
       </view>
       <!-- <view class="simplify_block">
         <view>{{processedData[0].assignmentHours/60}} <text style="font-size:4vw">H</text></view>
         <view class="subTitle">被分配</view>
       </view> -->
       <view class="simplify_block">
-        <view wx:if="{{processedData[0].totalHours>=0}}">{{weekCost/60}} <text style="font-size:5vw">H</text></view>
+        <view wx:if="{{processedData[0].totalHours>=0}}">{{weekCost/60}} 
+        <!-- <text style="font-size:5vw">H</text> -->
+        </view>
         <sc-loading wx:else color="white"></sc-loading>
-        <view class="subTitle">本周</view>
+        <view class="subTitle">本周已分配(h)</view>
       </view>
     </view>
   </view>

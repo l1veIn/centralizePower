@@ -100,6 +100,10 @@ Component({
     getUserInfo: {
       type: Boolean,
       value: false
+    },
+    isMe:{
+      type:Boolean,
+      value:false
     }
   },
   // ready:function(){
@@ -229,7 +233,8 @@ Component({
           showECharts:false
         })
       }
-    }
+    },
+    
   },
   ready() {
 

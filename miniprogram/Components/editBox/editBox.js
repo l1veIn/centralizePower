@@ -27,9 +27,10 @@ Component({
     repeat: false,
     repeatMode: 'daily',
     isLeader: wx.getStorageSync('_id') == wx.getStorageSync('groupLeader'),
-    groupInfo: wx.getStorageSync('groupInfo'),
+    // groupInfo: wx.getStorageSync('groupInfo'),
     addMemberList:[],
-    assignment:false
+    assignment:false,
+    qqGroup:'1101414506'
   },
   properties: {
     top: {
@@ -47,11 +48,12 @@ Component({
     that.animation = animation
     // that.data.datePicker = scui.DatePicker("#datepicker");
     // that.data.timePicker = scui.TimePicker("#timepicker");
-    // that.data.dialog = scui.Dialog("#dialog");
+    that.data.dialog = scui.Dialog("#dialog");
     animation.translateY(that.data.top).step()
 
     that.setData({
-      animationData: animation.export()
+      animationData: animation.export(),
+      groupInfo: wx.getStorageSync('groupInfo'),
     })
     let myId = wx.getStorageSync('_id')
     that.data.groupInfo.userList.map(function(x){
@@ -93,6 +95,17 @@ Component({
       let that = this
       wx.setClipboardData({
         data: that.data.groupInfo._id,
+        success:function(res){
+          wx.showToast({
+            title: '复制成功',
+          })
+        }
+      })
+    },
+    copyGroup(){
+      let that = this
+      wx.setClipboardData({
+        data: that.data.qqGroup,
         success:function(res){
           wx.showToast({
             title: '复制成功',
@@ -238,12 +251,71 @@ Component({
     pickerClosed() {
       console.log("选择器关闭");
     },
-    inputTaskName() {
+    editNickName() {
       let that = this;
-      that.setData({
-        inDialog: 'taskName'
-      })
       this.openDialog()
+    },
+    updateNickName(){
+      let that = this;
+      // console.log(that.data.nickName)
+      let nickName = that.data.nickName
+      if(!nickName||nickName.length>=7){
+        wx.showModal({
+          title: '提示',
+          content: '昵称不能太长，也不能为空',
+          showCancel:false
+        })
+        return
+      }else{
+        app.API.updateNickName(nickName,function(){
+          wx.showModal({
+            title: '提示',
+            content: '更改成功',
+            showCancel:false
+          })
+          that.triggerEvent('refresh')
+          that.cancel()
+        })
+      }
+    },
+    leaveGroup(){
+      let that = this
+      if(that.data.isLeader&&that.data.groupInfo.userList.length>1){
+        console.log('no')
+        wx.showModal({
+          title: '提示',
+          content: '团长只有所有人都离开后才可以离开',
+          showCancel:false
+        })
+        return
+      }else{
+        wx.showModal({
+          title: '提示',
+          content: '确认离开团队吗？',
+          success:function(res){
+            if (res.confirm){
+              app.API.leaveGroup(function(){
+                wx.showModal({
+                  title: '提示',
+                  content: '您已成功退出团队',
+                  showCancel:false
+                })
+                that.cancel()
+                wx.redirectTo({
+                  url: '/pages/login/login',
+                })
+              })
+            }
+          }
+        })
+      }
+    },
+    editAva(){
+      wx.showModal({
+        title: '提示',
+        content: '此功能正在开发中。。',
+        showCancel:false
+      })
     },
     addMember() {
       let that = this;
@@ -273,11 +345,11 @@ Component({
         userNameList
       })
     },
-    showTaskName(e) {
+    inputNickName(e) {
       let that = this
       console.log(e.detail.value)
       that.setData({
-        taskName: e.detail.value
+        nickName: e.detail.value
       })
     },
     choseRepeatMode() {

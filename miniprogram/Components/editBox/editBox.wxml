@@ -11,11 +11,8 @@
   <!-- <form bindsubmit="addTask"> -->
     <sc-dialog id="dialog" sc-class="box-shadow-8" bind:open="dialogOpen" bind:close="dialogClose" bind:opened="dialogOpened" bind:closed="dialogClosed">
       <view style="padding: 16px" class="text-body2">
-        <sc-input wx:if="{{inDialog=='taskName'}}" sc-class="sc-input" label="任务名" name="taskName" bindinput="showTaskName" selection-start="{{-1}}" cursor="0"></sc-input>
-        <sc-checkbox-group  name="like" sc-class="sc-checkbox-group-row" bindchange="checkboxChange" wx:if="{{inDialog=='addMember'}}">
-      <sc-checkbox wx:for="{{groupInfo.userList}}" wx:key="index" label="{{item.userInfo.nickName}}" value="{{item}}" sc-class="sc-checkbox" checked="{{checked[index]}}"></sc-checkbox>
-    </sc-checkbox-group>
-        <!-- <sc-button sc-class="sc-btn" bind:tap="confirmType">确认</sc-button> -->
+        <sc-input sc-class="sc-input" label="昵称" name="nickName" bindinput="inputNickName" selection-start="{{-1}}" cursor="0"></sc-input>
+        <sc-button sc-class="sc-btn" bind:tap="updateNickName">确认</sc-button>
       </view>
     </sc-dialog>
     <view style="max-height:70vh;overflow: scroll;">
@@ -45,6 +42,16 @@
       </sc-cell>
       <sc-cell bind:tap="leaveGroup">
         <text>离开团队</text>
+      </sc-cell>
+      <sc-cell wx:if="{{isLeader}}" bind:tap="editAva">
+        <text>修改团队名字</text>
+        <text slot="subheader">{{groupInfo.groupName}}</text>
+        <text slot="righttext" >点击修改</text>
+      </sc-cell>
+      <sc-cell bind:tap="copyGroup">
+        <text>联系我们</text>
+        <text slot="subheader">Q群：{{qqGroup}}</text>
+        <text slot="righttext" >点击复制</text>
       </sc-cell>
     </sc-cell-group>
     <!-- <sc-input sc-class="sc-textarea" label="备注信息" name="ps"></sc-input> -->

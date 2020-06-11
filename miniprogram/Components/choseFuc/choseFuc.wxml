@@ -7,8 +7,10 @@
   <view>集中力量办大事</view>
 </view>
 <button class="container" hover-class="hover" hover-start-time="{{0}}" open-type="{{getUserInfo?'getUserInfo':''}}" bindgetuserinfo="{{getUserInfo?'getUserInfo':''}}" bindtap="build">
-  创建团队
+  <view class="title">创建团队</view>
+  <view class="detail">获得专属你的团队ID，分享给其他小伙伴一起开始集中力量办大事吧！</view>
 </button>
 <button class="container" hover-class="hover" hover-start-time="{{0}}" open-type="{{getUserInfo?'getUserInfo':''}}" bindgetuserinfo="{{getUserInfo?'getUserInfo':''}}" bindtap="join">
-  加入团队
+  <view class="title">加入团队</view>
+  <view class="detail">输入好友分享的团队ID，体验更好的团队协作！</view>
 </button>

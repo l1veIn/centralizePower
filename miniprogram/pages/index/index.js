@@ -28,7 +28,8 @@ Page({
     let sysinfo = wx.getSystemInfoSync()
     that.setData({
       sysinfo,
-      today:new Date().format('yyyy-MM-dd')
+      today:new Date().format('yyyy-MM-dd'),
+      myId : wx.getStorageSync('_id')
     })
     that.getGroupInfo()
     // that.data.dialog = scui.Dialog("#dialog");
@@ -66,6 +67,7 @@ Page({
     let index = e.currentTarget.dataset.index
     that.setData({
       showIndex: index,
+      showCharts:false,
       isMe: userList[index]._id == wx.getStorageSync("_id")
     })
     // let processedDataFromUser = app.API.getTask2Date(tasks, userList[index]._id, taskList, Date.now(), Date.now() + (6 * 24 * 60 * 60 * 1000))

@@ -171,6 +171,40 @@ var API = {
       }
     })
   },
+
+  updateNickName(nickName, success) {
+    let that = this
+    wx.showLoading({
+      title: '加载中',
+    })
+    let data = {}
+    data['userInfo.nickName'] = nickName
+    db.collection('User').doc(wx.getStorageSync('_id')).update({
+      data,
+      success: function() {
+        wx.hideLoading()
+        success()
+      }
+    })
+  },
+  leaveGroup(success) {
+    let that = this
+    wx.showLoading({
+      title: '加载中',
+    })
+    let data = {}
+    data['belong'] = _.remove()
+    db.collection('User').doc(wx.getStorageSync('_id')).update({
+      data,
+      success: function() {
+        wx.hideLoading()
+        wx.removeStorageSync('groupid')
+        wx.removeStorageSync('groupLeader')
+        wx.removeStorageSync('groupInfo')
+        success()
+      }
+    })
+  },
   exitTask(config, success) {
     let that = this
     wx.showLoading({

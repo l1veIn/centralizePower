@@ -8,6 +8,8 @@ var Dialog = function() {
         i = i.selectComponent("#configBox")
       } else if (i.selectComponent("#taskBox")) {
         i = i.selectComponent("#taskBox")
+      }else if (i.selectComponent("#editBox")) {
+        i = i.selectComponent("#editBox")
       }
       if (this.dialog = i.selectComponent(this.id), this.dialog) return this;
       throw new Error("no this id of sc-dialog")

@@ -1,29 +1,29 @@
-<configBox wx:if="{{showBox}}" bindfinish="showConfigBox" id="configBox">
+<configBox wx:if="{{showBox}}" bindfinish="showConfigBox" bindrefresh="refresh" id="configBox">
 </configBox>
 
-<editBox wx:if="{{showEditBox}}" bindfinish="showEditBox" id="editBox">
+<editBox wx:if="{{showEditBox}}" bindfinish="showEditBox" id="editBox" bindrefresh="refresh">
 </editBox>
 
 
-<view bindtap="showCharts" class="header_config">
+<view bindtap="showCharts" class="header_config" style="margin-left:40px" wx:if='{{groupDetailInfo}}'> 
   <view class="iconfont  {{showCharts?'icon-rotateright':'icon-rotateleft'}}"></view>
 </view>
-<view bindtap="refresh" class="header_config" style="margin-left:40px">
+<!-- <view bindtap="refresh" class="header_config" style="margin-left:40px">
   <view class="iconfont icon-autorenew"></view>
-</view>
-<view bindtap="showEditBox" class="header_config" style="margin-left:80px" wx:if="{{showIndex==(-1)}}">
+</view> -->
+<view bindtap="showEditBox" class="header_config" wx:if="{{groupDetailInfo&&showIndex==(-1)}}">
   <view class="iconfont icon-edit"></view>
 </view>
-<view bindtap="backToMain" class="header_config" style="margin-left:80px" wx:if="{{showIndex!=(-1)}}">
+<view bindtap="backToMain" class="header_config" wx:if="{{showIndex!=(-1)}}">
   <view class="iconfont iconfont-home icon-home"></view>
 </view>
-<view bindtap="showConfigBox" class="header_config" style="margin-left:120px" wx:if="{{showIndex!=(-1)&&isMe}}">
+<view bindtap="showConfigBox" class="header_config" style="margin-left:80px" wx:if="{{showIndex!=(-1)&&isMe}}">
   <view class="iconfont icon-arrow_down"></view>
 </view>
 <view style="height:15px;width:100%"></view>
 <view class="timeHeader">
   <view>{{groupDetailInfo.groupName}}</view>
-  <view class="subTitle">{{today}}</view>
+  <view class="subTitle" wx:if='{{groupDetailInfo}}'>{{today}}</view>
 </view>
 
 
@@ -37,7 +37,7 @@
   </view>
   <block>
     <userBox wx:for="{{groupDetailInfo.userList}}" wx:key="index" wx:if="{{showIndex==(-1)||showIndex==index}}" bindtap="showDetail" data-index="{{index}}" userInfo="{{item.userInfo}}" processedData="{{showIndex==(-1)?processedData[index]:processedDataFromUser}}"
-      showCharts="{{showCharts}}"></userBox>
+      showCharts="{{showCharts}}" isMe="{{myId == item._id}}"></userBox>
   </block>
 
   <!-- 任务列表 -->

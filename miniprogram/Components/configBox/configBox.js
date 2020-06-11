@@ -130,6 +130,7 @@ Component({
           assignment
         },function(res){
           that.cancel()
+          that.triggerEvent('refresh')
         })
       }else{
         wx.showModal({
