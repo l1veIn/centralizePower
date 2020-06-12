@@ -14,11 +14,8 @@ function getOption(xData, data_cur, data_his) {
 
   windowWidth = windowWidth - 20 * 2 - 10 * 2 - 72
   var option = {
-    // title: {
-    //   text: '测试下面legend的红色区域不应被裁剪',
-    //   left: 'center'
-    // },
-    color: ["lightblue", "yellow"],
+    
+    color: [ "yellow","lightblue"],
     // legend: {
     //   data: ['A', 'B', 'C'],
     //   top: 50,
@@ -26,31 +23,59 @@ function getOption(xData, data_cur, data_his) {
     //   backgroundColor: 'red',
     //   z: 100
     // },
+    // tooltip:{
+    //   trigger:'axis',
+    //   axisPointer:{
+    //     type:'shadow'
+    //   }
+    // },
     grid: {
       containLabel: true,
       y: 8,
       y2: 0,
       x: windowWidth * 0.05,
-      x2: windowWidth * 0.05
+      x2: windowWidth * 0.12
     },
-    tooltip: {
-      show: true,
-      trigger: 'axis'
-    },
+    // tooltip: {
+    //   show: true,
+    //   trigger: 'axis'
+    // },
     xAxis: {
       type: 'category',
       boundaryGap: false,
       data: [],
+      axisLine:{
+        lineStyle:{
+          color:'white'
+        }
+      },
+      axisLabel:{
+        textStyle:{
+          color:'white'
+        }
+      },
       // show: false
     },
     yAxis: {
       x: 'center',
       type: 'value',
+      axisLine:{
+        lineStyle:{
+          color:'white'
+        }
+      },
+      axisLabel:{
+        textStyle:{
+          color:'white'
+        }
+      },
       // min: 12,
       max: function (value) {
         return value.max >= 12?Number(value.max.toString().match(/^\d+(?:\.\d{0,1})?/)):12; },
       // max:12,
+      splitNumber:5,
       splitLine: {
+        show:false,
         lineStyle: {
           type: 'dashed'
         }
@@ -60,16 +85,27 @@ function getOption(xData, data_cur, data_his) {
     series: [{
       name: 'A',
       type: 'line',
-      smooth: true,
+      stack:'total',
+      // barWidth:5,
+      areaStyle:{},
       data: []
     }, {
       name: 'B',
       type: 'line',
-      smooth: true,
+      stack:'total',
+      markLine:{
+        symbol:'none',
+        data:[
+        {type:'average',name:'pingjun',lineStyle:{
+            color:'white',
+            type:'dashed'
+          }}
+        ]
+      },
+      areaStyle:{},
       data: []
     }]
   };
-
   return option;
 }
 var lineChart = null;
@@ -161,14 +197,14 @@ Component({
           },
           series: [{
             data: processedData.map(function (x) {
-              return (x.totalHours - x.assignmentHours) / 60.0
+              return fix((x.assignmentHours) / 60.0)
             }),
             format: function (val, name) {
               return (val / 60.0).toFixed(2) + 'h';
             }
-          }, {
+          },{
             data: processedData.map(function (x) {
-              return (x.assignmentHours) / 60.0
+              return fix((x.totalHours - x.assignmentHours) / 60.0)
             }),
             format: function (val, name) {
               return (val / 60.0).toFixed(2) + 'h';
@@ -184,6 +220,9 @@ Component({
     },
     'showCharts': function(showCharts) {
       let that = this
+      let fix = function(num){
+        return Number(num.toString().match(/^\d+(?:\.\d{0,1})?/))
+      }
       if (showCharts) {
         that.setData({
           ecLine: {
@@ -214,14 +253,14 @@ Component({
                 },
                 series: [{
                   data: processedData.map(function (x) {
-                    return (x.totalHours - x.assignmentHours) / 60.0
+                    return fix((x.assignmentHours) / 60.0)
                   }),
                   format: function (val, name) {
                     return (val / 60.0).toFixed(2) + 'h';
                   }
-                }, {
+                },{
                   data: processedData.map(function (x) {
-                    return (x.assignmentHours) / 60.0
+                    return fix((x.totalHours - x.assignmentHours) / 60.0)
                   }),
                   format: function (val, name) {
                     return (val / 60.0).toFixed(2) + 'h';

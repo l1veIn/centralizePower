@@ -52,23 +52,3 @@
     <taskBox id="taskBox" info="{{processedDataFromUser[0].tmpDate_tasks}}"   bindrefresh="refresh"></taskBox>
   </block>
 </view>
-<!-- 已登陆 -->
-
-<!--  
-<block wx:if="{{!showBox}}">
-  <userBox static="{{true}}" bindtapBox='' userInfo="{{userInfo}}"></userBox>
-  <view class="timeHeader">
-    <view>今日数据</view>
-  </view>
-
-  <canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas" bindtouchstart="touchHandler"></canvas>
-
-  <taskBox></taskBox>
-  <taskBox></taskBox>
-  <taskBox></taskBox>
-
-   <view class='container_box'>
-    <Calendar id="Calendar" toggleType='mini' bind:select="select"></Calendar>
-  </view>
-
-</block> -->

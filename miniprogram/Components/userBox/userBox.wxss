@@ -15,7 +15,7 @@
   margin: 10px 20px;
   background: rgba(212, 197, 197, 0.15);
   border-radius: 2vh;
-  border: none;
+  border: none ;
   color: white;
   transition: transform 0.3s;
   padding:10px;
