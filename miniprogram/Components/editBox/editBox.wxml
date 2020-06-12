@@ -1,3 +1,4 @@
+<guide wx:if="{{about}}" index='{{3}}' bindfinish="finishAbout"></guide>
 <view class="drawer_screen" bindtap='cancel'></view>
 <view class='drawer_box' animation="{{animationData}}" style='margin-top:{{-1*top||0}}px'>
   <view bindtap="cancel" style="margin-left:40px" class="header_config">
@@ -47,6 +48,9 @@
         <text>修改团队名字</text>
         <text slot="subheader">{{groupInfo.groupName}}</text>
         <text slot="righttext" >点击修改</text>
+      </sc-cell>
+      <sc-cell bind:tap="about">
+        <text>关于...</text>
       </sc-cell>
       <sc-cell bind:tap="copyGroup">
         <text>联系我们</text>

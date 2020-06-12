@@ -4,6 +4,8 @@
 <editBox wx:if="{{showEditBox}}" bindfinish="showEditBox" id="editBox" bindrefresh="refresh">
 </editBox>
 
+<guide wx:if="{{!finishGuide1}}" index='{{1}}' bindfinish="finishGuide1"></guide>
+<guide wx:if="{{showIndex!=(-1)&&!finishGuide2}}" index='{{2}}' bindfinish="finishGuide2"></guide>
 
 <view bindtap="showCharts" class="header_config" style="margin-left:40px" wx:if='{{groupDetailInfo}}'> 
   <view class="iconfont  {{showCharts?'icon-rotateright':'icon-rotateleft'}}"></view>

@@ -14,7 +14,9 @@ Page({
     selectVal: '',
     home:false,
     showCharts:false,
-    showIndex:-1
+    showIndex:-1,
+    finishGuide1:wx.getStorageSync('finishGuide1') || false,
+    finishGuide2:wx.getStorageSync('finishGuide2') || false
   },
   // onLoad(){
   //   let that = this
@@ -33,6 +35,20 @@ Page({
     })
     that.getGroupInfo()
     // that.data.dialog = scui.Dialog("#dialog");
+  },
+  finishGuide1(){
+    let that = this
+    that.setData({
+      finishGuide1:true
+    })
+    wx.setStorageSync('finishGuide1', true)
+  },
+  finishGuide2(){
+    let that = this
+    that.setData({
+      finishGuide2:true
+    })
+    wx.setStorageSync('finishGuide2', true)
   },
   getGroupInfo() {
     let that = this

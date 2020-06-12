@@ -30,7 +30,8 @@ Component({
     // groupInfo: wx.getStorageSync('groupInfo'),
     addMemberList:[],
     assignment:false,
-    qqGroup:'1101414506'
+    qqGroup:'1101414506',
+    about:false
   },
   properties: {
     top: {
@@ -90,6 +91,18 @@ Component({
         that.triggerEvent('finish', myEventDetail)
       }.bind(that), 300)
 
+    },
+    about(){
+      let that = this
+      that.setData({
+        about:true
+      })
+    },
+    finishAbout(){
+      let that = this
+      that.setData({
+        about:false
+      })
     },
     copyId(){
       let that = this

@@ -1,2 +1,81 @@
-<!--Components/guide/guide.wxml-->
-<text>Components/guide/guide.wxml</text>
+<view class="drawer_screen"></view>
+
+<view class="page1" wx:if="{{index==1}}">
+<block wx:if="{{first}}">
+<view class="header_config">
+  <view class="iconfont icon-edit"></view>
+</view>
+<image class="arrow" src="../../image/arrow.png"></image>
+<image class="image1" src="../../image/1.png"></image>
+<image class="image2" src="../../image/2.jpeg"></image>
+<image class="know" src="../../image/know.png" bindtap="next"></image>
+
+</block>
+
+<block wx:else> 
+<view class="header_config" style="margin-left:40px">
+  <view class="iconfont icon-rotateright"></view>
+</view>
+<image class="arrow" src="../../image/arrow.png" style="margin-left:40px"></image>
+<image class="image1" src="../../image/3.png"></image>
+<image class="image4" src="../../image/4.png"></image>
+<image class="image5" src="../../image/5.png"></image>
+<image class="know" src="../../image/know.png" bindtap="cancel"></image>
+
+</block>
+
+</view>
+
+
+<view class="page1" wx:if="{{index==2}}">
+<block wx:if="{{first}}">
+<view class="header_config" style="margin-left:80px">
+  <view class="iconfont icon-arrow_down"></view>
+</view>
+<image class="arrow" src="../../image/arrow.png" style="margin-left:80px"></image>
+<image class="image1" src="../../image/6.png" style="margin-left:10px"></image>
+<image class="image2" src="../../image/7.png" mode="aspectFill"></image>
+<image class="know" src="../../image/know.png" bindtap="next"></image>
+</block>
+<block wx:else> 
+<image class="image8" src="../../image/8.png"></image>
+<image class="image10" src="../../image/10.png"></image>
+<image class="image9" src="../../image/9.png"></image>
+<image class="know" src="../../image/know.png" bindtap="cancel"></image>
+</block>
+</view>
+
+<view class="page1" wx:if="{{index==3}}" >
+<view class="container" bindtap="cancel">
+<view class="title">
+关于
+</view>
+<view class="detail">
+这是一个参赛作品@微信小程序开发大赛2020
+</view>
+<view class="detail">
+鸣谢：
+</view>
+<view class="detail">
+@scui:
+</view>
+<view class="detail">
+https://github.com/xbup/sc-ui
+</view>
+<view class="detail">
+@e-charts:
+</view>
+<view class="detail">
+https://github.com/apache/incubator-echarts
+</view>
+<view class="detail">
+@wx_calendar:
+</view>
+<view class="detail">
+https://github.com/treadpit/wx_calendar
+</view>
+<view class="detail">
+点击返回
+</view>
+</view>
+</view>

@@ -19,6 +19,7 @@
     "sc-dialog": "../scui/components/scDialog/sc-dialog",
     "sc-snackbar": "../scui/components/scSnackbar/sc-snackbar",
     "sc-date-picker": "../scui/components/scDatePicker/sc-date-picker",
-    "sc-time-picker": "../scui/components/scTimePicker/sc-time-picker"
+    "sc-time-picker": "../scui/components/scTimePicker/sc-time-picker",
+    "guide": "../guide/guide"
   }
 }
