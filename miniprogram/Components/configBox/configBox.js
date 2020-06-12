@@ -26,8 +26,6 @@ Component({
     timeMode: false,
     repeat: false,
     repeatMode: 'daily',
-    isLeader: wx.getStorageSync('_id') == wx.getStorageSync('groupLeader'),
-    groupInfo: wx.getStorageSync('groupInfo'),
     addMemberList:[],
     assignment:false
   },
@@ -51,7 +49,9 @@ Component({
     animation.translateY(that.data.top).step()
 
     that.setData({
-      animationData: animation.export()
+      animationData: animation.export(),
+      isLeader: wx.getStorageSync('_id') == wx.getStorageSync('groupLeader'),
+      groupInfo: wx.getStorageSync('groupInfo'),
     })
 
     // setTimeout(function () {
@@ -233,6 +233,7 @@ Component({
       that.setData({
         inDialog: 'addMember'
       })
+      console
       let checked = that.data.groupInfo.userList.map(function (x) {
         return that.data.addMemberList.indexOf(x._id) >= 0
       })

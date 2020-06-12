@@ -14,7 +14,7 @@
     </view> -->
     <view class="simplify" wx:if="{{!showCharts}}">
       <view class="simplify_block">
-        <view wx:if="{{processedData[0].totalHours>=0}}">{{processedData[0].totalHours/60}} 
+        <view wx:if="{{processedData[0].totalHours>=0}}">{{todayCost}} 
         <!-- <text style="font-size:5vw">H</text> -->
         </view>
         <sc-loading wx:else color="white"></sc-loading>
@@ -25,7 +25,7 @@
         <view class="subTitle">被分配</view>
       </view> -->
       <view class="simplify_block">
-        <view wx:if="{{processedData[0].totalHours>=0}}">{{weekCost/60}} 
+        <view wx:if="{{processedData[0].totalHours>=0}}">{{weekCost}} 
         <!-- <text style="font-size:5vw">H</text> -->
         </view>
         <sc-loading wx:else color="white"></sc-loading>

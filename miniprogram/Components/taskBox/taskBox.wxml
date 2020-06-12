@@ -1,10 +1,10 @@
 <button class="get-user-info" bindtap="openDialog" data-index="{{index}}" class='container' hover-class="hover" hover-start-time="{{0}}" wx:for="{{info}}" wx:key='index'>
   <view class="left_part" style="flex:0;border-right:1px solid grey">
-    <view class="title">{{item.taskStartTime||(item.cost/60)+' h'}} {{item.taskEndTime}}</view>
+    <view class="title">{{item.taskStartTime||(item.cost)+' min'}} {{item.taskEndTime}}</view>
   </view>
   <view class="content">
     <view>{{item.taskname}}</view>
-    <view>{{(item.cost/60)+' h'}}</view>
+    <view>{{(item.cost)+' min'}}</view>
     <view class="ps" wx:if="{{item.ps}}">ps：{{item.ps||'暂无'}}</view>
   </view>
 </button>

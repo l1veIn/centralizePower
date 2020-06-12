@@ -141,8 +141,12 @@ Component({
       processedData.map(function(x) {
         weekCost = weekCost + x.totalHours
       })
+      let fix = function(num){
+        return Number(num.toString().match(/^\d+(?:\.\d{0,1})?/))
+      }
       that.setData({
-        weekCost
+        todayCost:fix(processedData[0].totalHours/60),
+        weekCost:fix(weekCost/60)
       })
       // console.log('ob processedData', that.data.ecLine)
       if (that.data.showECharts) {

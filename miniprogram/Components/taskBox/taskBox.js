@@ -15,16 +15,16 @@ Component({
    * 组件的初始数据
    */
   data: {
-    myId: wx.getStorageSync('_id'),
+    // myId: wx.getStorageSync('_id'),
   },
   observers: {
-    'processedData': function (processedData) {
+    // 'info': function (processedData) {
       // 在 numberA 或者 numberB 被设置时，执行这个函数
-      let that = this
-      that.setData({
-        groupInfo: wx.getStorageSync('groupInfo')
-      })
-      }
+      // let that = this
+      // that.setData({
+      //   groupInfo: wx.getStorageSync('groupInfo')
+      // })
+      // }
   },
   /**
    * 组件的方法列表
@@ -33,9 +33,10 @@ Component({
     let that = this
     that.data.dialog = scui.Dialog("#dialog");
     that.setData({
-      isLeader: that.data.myId == wx.getStorageSync('groupLeader'),
+      myId: wx.getStorageSync('_id'),
+      isLeader:  wx.getStorageSync('_id') == wx.getStorageSync('groupLeader'),
       groupLeader: wx.getStorageSync('groupLeader'),
-      groupInfo: wx.getStorageSync('groupInfo')
+      // groupInfo: wx.getStorageSync('groupInfo')
     })
     if (that.data.isLeader) {
       that.data.addMember = scui.Dialog("#addMember");
@@ -47,11 +48,16 @@ Component({
       // console.log(e.currentTarget.dataset.index)
       let that = this
       let index = e.currentTarget.dataset.index
+      let groupInfo = wx.getStorageSync('groupInfo')
+      that.setData({
+        groupInfo
+      })
       // let edit = that.data.groupInfo.tasks[that.data.info[index]._id][0] == that.data.myId
       let edit = that.data.info[index].createdBy == that.data.myId
-      let join = that.data.groupInfo.tasks[that.data.info[index]._id].indexOf(that.data.myId) == -1
+      console.log(groupInfo,that.data.info)
+      let join = groupInfo.tasks[that.data.info[index]._id].indexOf(that.data.myId) == -1
       let exit = !join
-      // let addMember = that.data.groupInfo.leader == that.data.myId
+      // let addMember = groupInfo.leader == that.data.myId
       that.setData({
         index,
         edit,
@@ -107,8 +113,9 @@ Component({
     },
     addMember() {
       let that = this;
-      let checked = that.data.groupInfo.userList.map(function(x) {
-        return that.data.groupInfo.tasks[that.data.info[that.data.index]._id].indexOf(x._id) >= 0
+      let groupInfo = wx.getStorageSync('groupInfo')
+      let checked = groupInfo.userList.map(function(x) {
+        return groupInfo.tasks[that.data.info[that.data.index]._id].indexOf(x._id) >= 0
       })
       console.log(checked)
       that.setData({
@@ -131,6 +138,10 @@ Component({
     },
     confirmAdd() {
       let that = this
+      if(!that.data.addMemberList){
+        that.data.addMember.toggle();
+        return
+      }
       app.API.editMember({
         userid: that.data.addMemberList,
         taskid: that.data.info[that.data.index]._id
