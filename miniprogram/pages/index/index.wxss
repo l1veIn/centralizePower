@@ -99,6 +99,16 @@ page {
   font-size: 18px;
   font-weight: lighter;
 }
+.icon{
+  position: relative;
+  top:0;
+  left: 0;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+  font-weight: lighter;
+}
 .canvas {
     width: 90%;
     height: 170px;

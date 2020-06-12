@@ -47,7 +47,9 @@ function getOption(xData, data_cur, data_his) {
       x: 'center',
       type: 'value',
       // min: 12,
-      max: function (value) { return value.max >= 12?value.max:12; },
+      max: function (value) {
+        return value.max >= 12?Number(value.max.toString().match(/^\d+(?:\.\d{0,1})?/)):12; },
+      // max:12,
       splitLine: {
         lineStyle: {
           type: 'dashed'

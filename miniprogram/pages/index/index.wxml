@@ -23,8 +23,10 @@
   <view class="iconfont icon-arrow_down"></view>
 </view>
 <view style="height:15px;width:100%"></view>
-<view class="timeHeader" style="height:{{rtbuttonInfo.height+rtbuttonInfo.top}}px">
-  <view>{{groupDetailInfo.groupName}}</view>
+<view class="timeHeader" style="height:{{rtbuttonInfo.height+rtbuttonInfo.top}}px;" >
+  <view bindtap="refresh">{{groupDetailInfo.groupName}} 
+  <text wx:if="{{groupDetailInfo}}" class="iconfont icon icon-autorenew"></text>
+  </view>
   <view class="subTitle" wx:if='{{groupDetailInfo}}'>{{today}}</view>
 </view>
 
