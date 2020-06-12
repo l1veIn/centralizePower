@@ -28,8 +28,10 @@ Page({
     // 获取openid
     let that = this
     let sysinfo = wx.getSystemInfoSync()
+    let rtbuttonInfo = wx.getMenuButtonBoundingClientRect()
     that.setData({
       sysinfo,
+      rtbuttonInfo,
       today:new Date().format('yyyy-MM-dd'),
       myId : wx.getStorageSync('_id')
     })

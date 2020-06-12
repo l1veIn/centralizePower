@@ -7,23 +7,23 @@
 <guide wx:if="{{!finishGuide1}}" index='{{1}}' bindfinish="finishGuide1"></guide>
 <guide wx:if="{{showIndex!=(-1)&&!finishGuide2}}" index='{{2}}' bindfinish="finishGuide2"></guide>
 
-<view bindtap="showCharts" class="header_config" style="margin-left:40px" wx:if='{{groupDetailInfo}}'> 
+<view bindtap="showCharts" class="header_config" style="margin-left:40px;top:{{rtbuttonInfo.top}}px;height:{{rtbuttonInfo.height}}px;width:{{rtbuttonInfo.height}}px;" wx:if='{{groupDetailInfo}}'> 
   <view class="iconfont  {{showCharts?'icon-rotateright':'icon-rotateleft'}}"></view>
 </view>
 <!-- <view bindtap="refresh" class="header_config" style="margin-left:40px">
   <view class="iconfont icon-autorenew"></view>
 </view> -->
-<view bindtap="showEditBox" class="header_config" wx:if="{{groupDetailInfo&&showIndex==(-1)}}">
+<view bindtap="showEditBox" class="header_config" wx:if="{{groupDetailInfo&&showIndex==(-1)}}" style="top:{{rtbuttonInfo.top}}px;height:{{rtbuttonInfo.height}}px;width:{{rtbuttonInfo.height}}px;">
   <view class="iconfont icon-edit"></view>
 </view>
-<view bindtap="backToMain" class="header_config" wx:if="{{showIndex!=(-1)}}">
+<view bindtap="backToMain" class="header_config" wx:if="{{showIndex!=(-1)}}" style="top:{{rtbuttonInfo.top}}px;height:{{rtbuttonInfo.height}}px;width:{{rtbuttonInfo.height}}px;">
   <view class="iconfont iconfont-home icon-home"></view>
 </view>
-<view bindtap="showConfigBox" class="header_config" style="margin-left:80px" wx:if="{{showIndex!=(-1)&&isMe}}">
+<view bindtap="showConfigBox" class="header_config" style="margin-left:80px;top:{{rtbuttonInfo.top}}px;height:{{rtbuttonInfo.height}}px;width:{{rtbuttonInfo.height}}px;" wx:if="{{showIndex!=(-1)&&isMe}}">
   <view class="iconfont icon-arrow_down"></view>
 </view>
 <view style="height:15px;width:100%"></view>
-<view class="timeHeader">
+<view class="timeHeader" style="height:{{rtbuttonInfo.height+rtbuttonInfo.top}}px">
   <view>{{groupDetailInfo.groupName}}</view>
   <view class="subTitle" wx:if='{{groupDetailInfo}}'>{{today}}</view>
 </view>

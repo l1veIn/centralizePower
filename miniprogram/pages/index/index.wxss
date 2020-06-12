@@ -46,14 +46,14 @@ page {
   top: 26px;
   left: 10px; */
   color: white;
-  margin-left: 20px;
+  /* margin-left: 20px; */
   /* padding-top:5px; */
-  height: 54px;
+  height: 10vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-size: 3vh;
+  font-size: 4vw;
   font-weight: 900;
 }
 .subTitle{
@@ -64,7 +64,7 @@ page {
 .header_config {
   width: 32px;
   height: 32px;
-  top: 26px;
+  /* top: 26px; */
   left: 10px;
   transition: all 0.8s;
   position: absolute;
