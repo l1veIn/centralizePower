@@ -98,11 +98,11 @@ var API = {
       // 成功回调
       complete: function(res) {
         wx.hideLoading()
-        
+        let myId = wx.getStorageSync('_id')
         for(let i in res.result.list[0].userList){
           if(res.result.list[0].userList[i]._id==res.result.list[0].leader){
             res.result.list[0].userList[i].rank = 2
-          }else if(res.result.list[0].userList[i]._id==wx.getStorageSync('_id')){
+          }else if(res.result.list[0].userList[i]._id==myId){
             res.result.list[0].userList[i].rank = 1
           }else{
             res.result.list[0].userList[i].rank = 0
