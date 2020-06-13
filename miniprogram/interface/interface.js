@@ -18,6 +18,9 @@ var API = {
     })
   },
   doMsgSecCheck: function (text,success) {
+    wx.showLoading({
+      title: '检测中...',
+    })
     wx.serviceMarket.invokeService({
       service: 'wxee446d7507c68b11',
       api: 'msgSecCheck',
@@ -28,6 +31,7 @@ var API = {
     }).then(res => {
       // success()
       // console.log(res)
+      wx.hideLoading()
       if(res.data.Response.EvilTokens.length==0){
         success()
       }else{
@@ -41,14 +45,14 @@ var API = {
   },
   createGroup(config, success) {
     let that = this
-    wx.showLoading({
-      title: '加载中',
-    })
     let {
       input
     } = config
     let _id = that.getID()
     that.doMsgSecCheck(input,function(){
+      wx.showLoading({
+        title: '加载中',
+      })
       db.collection('Group').add({
         data: {
           _id,
