@@ -17,6 +17,28 @@ var API = {
       }
     })
   },
+  doMsgSecCheck: function (text,success) {
+    wx.serviceMarket.invokeService({
+      service: 'wxee446d7507c68b11',
+      api: 'msgSecCheck',
+      data: {
+        "Action": "TextApproval",
+        "Text": text
+      },
+    }).then(res => {
+      // success()
+      // console.log(res)
+      if(res.data.Response.EvilTokens.length==0){
+        success()
+      }else{
+        wx.showModal({
+          title: '非法词汇',
+          content: res.data.Response.EvilTokens[0].EvilKeywords[0],
+          showCancel:false
+        })
+      } 
+    })
+  },
   createGroup(config, success) {
     let that = this
     wx.showLoading({
@@ -26,22 +48,25 @@ var API = {
       input
     } = config
     let _id = that.getID()
-    db.collection('Group').add({
-      data: {
-        _id,
-        groupName: input,
-        createTime: Date.now(),
-        leader: wx.getStorageSync('_id')
-      },
-      success: function(res) {
-        wx.setStorageSync('groupid', res._id)
-        wx.hideLoading()
-        that.addToGroup({
-          userid: wx.getStorageSync('_id'),
-          groupid: res._id
-        }, success)
-      }
+    that.doMsgSecCheck(input,function(){
+      db.collection('Group').add({
+        data: {
+          _id,
+          groupName: input,
+          createTime: Date.now(),
+          leader: wx.getStorageSync('_id')
+        },
+        success: function(res) {
+          wx.setStorageSync('groupid', res._id)
+          wx.hideLoading()
+          that.addToGroup({
+            userid: wx.getStorageSync('_id'),
+            groupid: res._id
+          }, success)
+        }
+      })
     })
+    
   },
   addToGroup(config, success) {
     let that = this

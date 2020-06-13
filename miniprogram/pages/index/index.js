@@ -27,6 +27,7 @@ Page({
   onLoad: function(options) {
     // 获取openid
     let that = this
+    // app.API.doMsgSecCheck('法轮功',function(){})
     let sysinfo = wx.getSystemInfoSync()
     let rtbuttonInfo = wx.getMenuButtonBoundingClientRect()
     that.setData({
@@ -38,6 +39,7 @@ Page({
     that.getGroupInfo()
     // that.data.dialog = scui.Dialog("#dialog");
   },
+  
   finishGuide1(){
     let that = this
     that.setData({
